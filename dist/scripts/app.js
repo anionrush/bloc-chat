@@ -1,3 +1,3 @@
 (function() {
-    angular.module('blocChat', ["firebase"])
+    angular.module('blocChat', ['firebase', 'ui.bootstrap'])
 })(); 

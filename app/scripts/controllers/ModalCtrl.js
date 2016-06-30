@@ -7,7 +7,7 @@
             var modalInstance = $uibModal.open({
                 animation: false,
                 templateUrl: '/templates/modal.html',
-                controller: 'ModalInstanceCtrl',
+                controller: 'ModalInstanceCtrl as mic',
                 size: 'sm'
                 });
         }
@@ -22,20 +22,31 @@
 
     function ModalInstanceCtrl($scope, $uibModalInstance, $firebaseArray) {
         
-        var ref = new Firebase("https://bloc-chat-onur.firebaseio.com/");
+        var ref = new Firebase("https://bloc-chat-onur.firebaseio.com/rooms");
+        var ref_msg = new Firebase("https://bloc-chat-onur.firebaseio.com/messages");
         
-        $scope.roomArray = $firebaseArray(ref);
+        this.roomArray = $firebaseArray(ref);
+        this.messageArray = $firebaseArray(ref_msg);
         
-        $scope.addRoom = function(){
+        this.addRoom = function(){
             
-            $scope.roomArray.$add({
-                text: $scope.addText,
+            this.roomArray.$add({
+                text: this.addText,
+            })
+             
+            
+            this.messageArray.$add({
+                user: "randomUser",
+                content: this.addText,
+                sentAt: "string",
+                roomId: "-KLVC3fl-N7CbEfDs7nu"
+                
             })
             $uibModalInstance.close();
             
         };
         
-        $scope.cancel = function () {
+        this.cancel = function () {
             $uibModalInstance.close();
         };
     };

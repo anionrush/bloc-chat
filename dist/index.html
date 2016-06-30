@@ -9,25 +9,32 @@
     
 <body>
     
-    <div class="container no-padding">
+    <div class="container no-padding" ng-controller="RoomCtrl as vm">
 
         <div class="col-xs-4 no-padding menu-bar">
 
-            <div ng-controller="RoomCtrl">
-                <div class=""  >
-                    <h1 style="margin-top: 0px; margin-left: 5px;"> Bloc Chat</h1>
-                    <div ng-controller="ModalCtrl as mdl">
-                        <button style="margin-left: 5px;" class="btn btn-default" ng-click="mdl.open()">New room</button>
+            <div >
+                <h1 style="margin-top: 0px; margin-left: 5px;"> Bloc Chat</h1>
+                <div ng-controller="ModalCtrl as mdl">
+                    <button style="margin-left: 5px;" class="btn btn-primary" ng-click="mdl.open()">New room</button>
+                </div>
+                <div ng-repeat="room in vm.rooms"> 
+                    <div class="room-row"> 
+                        <button class="room-button" ng-click="vm.messages = vm.getMessages(room)"><strong> {{room.text}}</strong></button>
+                                                
+
                     </div>
-                    <div ng-repeat="room in rooms"> 
-                        <div class="room-row"> {{room.text}}</div>
-                    </div>
+                    
                 </div>
              </div>
         </div>
-        
-        <div class="col-md-4">
+         
+        <div class="col-xs-8">
+            <div ng-repeat="msg in vm.messages"> 
+               {{msg.content}}
 
+            </div>
+            
         </div>
 </div>
             

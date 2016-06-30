@@ -11,8 +11,11 @@
 
     <div ng-controller="RoomCtrl">
         
-        <div ng-repeat="room in rooms">
-        {{room.name}}
+        <div class="menu-bar" >
+            <h1 style="margin-top: 0px"> Bloc Chat</h1>
+            <div ng-repeat="room in rooms"> 
+                <div class="room-row"> {{room.name}}</div>
+            </div>
         </div>
         
     </div>
@@ -30,7 +33,7 @@
         (function() {
             function Room($firebaseArray) {
                 var firebaseRef = new Firebase("https://bloc-chat-onur.firebaseio.com/");
-                var rooms = [{name: "example"}, {name: "example2"}]; //$firebaseArray(firebaseRef.child('rooms'));
+                var rooms = [{name: "example"}, {name: "example2"}, {name: "example3"}]; //$firebaseArray(firebaseRef.child('rooms'));
                 
                 return {all: rooms}
               

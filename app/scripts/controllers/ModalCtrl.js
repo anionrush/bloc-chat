@@ -34,14 +34,6 @@
                 text: this.addText,
             })
              
-            
-            this.messageArray.$add({
-                user: "randomUser",
-                content: this.addText,
-                sentAt: "string",
-                roomId: "-KLVC3fl-N7CbEfDs7nu"
-                
-            })
             $uibModalInstance.close();
             
         };

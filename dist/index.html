@@ -22,15 +22,18 @@
                 <div ng-repeat="room in vm.rooms"> 
                     <div class="room-row"> 
                         <button class="room-button" ng-click="vm.messages = vm.getMessages(room)" >
-                            <strong> {{room.text}}</strong></button>
+                            <strong> {{room.text}}</strong>
+                        </button>
                     </div>
                 </div>
 
             </div>
          
             <div class="col-xs-9 no-padding pull-left" style=" height: 100vh;">
+                
                 <div ng-repeat="msg in vm.messages"> 
                     <div ng-class-odd="'task-odd'">
+                        
                         <strong>{{msg.user}}</strong>
                         <br>
                         {{msg.content}}
